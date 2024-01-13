@@ -15,3 +15,13 @@ tasks:
     silent: true
     cmds:
       - mkdir -p "${MULTI_MEGA_SYNC_HOME}"
+  start:
+    silent: true
+    cmds:
+      - |
+        jq -r '.instances[] | "\(.folder)"' config.json | while read folder; do
+          HOME="${MULTI_MEGA_SYNC_HOME}/$folder"
+          echo "Launching MegaSync for $HOME"
+          megasync 2 > /dev/null &
+          sleep 2
+        done
