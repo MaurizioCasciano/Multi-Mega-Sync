@@ -7,6 +7,10 @@ env:
     sh: "[ -f .env ] && . .env ; echo ${MULTI_MEGA_SYNC_HOME:-/multi-mega-sync}"
 
 tasks:
+  requirements:
+    silent: true
+    cmds:
+      - sudo apt-get install -y jq megasync
   setup:
     silent: true
     cmds:
