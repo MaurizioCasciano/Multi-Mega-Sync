@@ -25,3 +25,7 @@ tasks:
           megasync 2 > /dev/null &
           sleep 2
         done
+  stop:
+    silent: true
+    cmds:
+      - killall megasync
